@@ -41,6 +41,25 @@ func DecodeJson(resp []byte) Currency {
 
 }
 
+// working in this logic... its quite hard to iterate over a map, didnt learn it yet
+
+func FindCurrency(currency Currency, ConversionRates map[string]float64) map[string]float64 {
+
+	var value map[string]float64
+
+	for i := range currency.ConversionRates {
+
+		if currency.ConversionRates[i] == ConversionRates[i] {
+
+			value = ConversionRates
+
+		}
+
+	}
+
+	return value
+}
+
 func main() {
 
 	body := Getrequest()
