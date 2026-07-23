@@ -41,31 +41,29 @@ func DecodeJson(resp []byte) Currency {
 
 }
 
-// working in this logic... its quite hard to iterate over a map, didnt learn it yet
+// Just check if the key exists in the map, does not need to iterate over it.(actually a map is often used to replace for loops when you know the key)
 
-func FindCurrency(currency Currency, ConversionRates map[string]float64) map[string]float64 {
+func FindCurrency(currency Currency, searchKey string) float64 {
 
-	var value map[string]float64
+	var save float64
 
-	for i := range currency.ConversionRates {
+	_, exists := currency.ConversionRates[searchKey] // this is a "comma ok idiom" or "map lookup", its a native golang expression to search for values in a map.
 
-		if currency.ConversionRates[i] == ConversionRates[i] {
-
-			value = ConversionRates
-
-		}
+	if exists {
+		save = currency.ConversionRates[searchKey]
 
 	}
 
-	return value
+	return save
+
 }
 
 func main() {
 
 	body := Getrequest()
 	currency := DecodeJson(body)
+	find := FindCurrency(currency, "BRL")
 
-	fmt.Println(currency)
-	fmt.Printf("%T\n", currency)
+	fmt.Println(find)
 
 }
