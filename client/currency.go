@@ -22,16 +22,16 @@ func DecodeJson(resp []byte) Currency {
 
 func FindCurrency(currency Currency, searchKey string) float64 {
 
-	var save float64
+	var found float64
 
 	_, exists := currency.ConversionRates[searchKey] // this is a "comma ok idiom" or "map lookup", its a native golang expression to search for values in a map.
 	// return the value associated with the key and a bool if the key exist or not.
 
 	if exists {
-		save = currency.ConversionRates[searchKey]
+		found = currency.ConversionRates[searchKey]
 
 	}
 
-	return save
+	return found
 
 }

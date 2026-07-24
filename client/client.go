@@ -8,7 +8,7 @@ import (
 
 func Getrequest() []byte {
 
-	resp, err := http.Get("https://v6.exchangerate-api.com/v6/<api-key>/latest/GBP")
+	resp, err := http.Get("https://v6.exchangerate-api.com/v6/f9d939a029baee98c7b90a7f/latest/GBP")
 	if err != nil {
 		fmt.Println("Error")
 	}
